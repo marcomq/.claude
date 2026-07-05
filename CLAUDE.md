@@ -11,8 +11,9 @@
 
 ## Tool routing (use the right layer)
 
-- **TokenSave** → primary and default retrieval/navigation layer, especially for small, short tasks: analysis, searching, and locating small fixes. Reach for it first. Use its vector/semantic search rather than recursive scans or broad greps, and prefer its symbol-level operations over whole-file reads.
-- **Serena** → complementary code navigation (references, call hierarchies) where TokenSave doesn't cover it.
+- **TokenSave** → primary and default retrieval/navigation layer, especially for small, short tasks: analysis, searching, and locating small fixes. Reach for it first. Use its vector/semantic search rather than recursive scans or broad greps, and prefer its symbol-level operations over whole-file reads (`tokensave_context`, `tokensave_search`, `tokensave_callers`, `tokensave_impact`). Note: its index goes stale across branch switches. For structural queries the tools don't expose, query `.tokensave/tokensave.db` directly (tables: `nodes`, `edges`, `files`).
+- **Serena** → complementary code navigation (references, call hierarchies) where TokenSave doesn't cover it. Prefer it for larger / multi-step tasks that span many files and plan-mode, since it carries project context across the task.
+- **Explore agent** → last resort for code research. Don't cold-start `Agent(subagent_type=Explore)` for "where is X / what calls this" — a structural tool (TokenSave, Serena, rust-analyzer) answers cheaper. Fall back to Explore only when no structural tool fits (not a code question, or the index is unavailable); if you do, tell it to use the project's structural tools instead of raw Read/grep.
 - **rust-analyzer** → Rust types, signatures, diagnostics, navigation. Don't guess types or signatures.
 - **context7** (if available) → pull up-to-date, version-specific docs and API signatures for external libraries/crates before using them. Prevents outdated or hallucinated APIs; cheaper than reading vendored source.
 - **Svelte MCP** → for any Svelte 5 / SvelteKit code:
