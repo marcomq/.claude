@@ -1,0 +1,44 @@
+"mcpServers": {
+    "github.com/upstash/context7-mcp": {
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "autoApprove": [],
+      "command": "npx",
+      "disabled": false,
+      "env": {}
+    },
+    "rust_analyzer": {
+      "args": [],
+      "command": "rust-analyzer-mcp",
+      "timeout": 120
+    },
+    "serena": {
+      "args": [
+        "start-mcp-server",
+        "--project-from-cwd",
+        "--context=codex",
+        "--open-web-dashboard=false"
+      ],
+      "autoApprove": [
+        "find_symbol"
+      ],
+      "command": "serena",
+      "timeout": 120
+    },
+    "svelte": {
+      "args": [
+        "-y",
+        "@sveltejs/mcp"
+      ],
+      "command": "npx",
+      "timeout": 120
+    },
+    "tokensave": {
+      "command": "/Users/marcomengelkoch/.cargo/bin/tokensave",
+      "args": [
+        "serve"
+      ]
+    }
+  },

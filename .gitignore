@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Local environment
+.env
+.env.*
+
+# Local secrets
+secrets.json
+credentials.json
+
+# Temporary files
+tmp/
+cache/
+*.tmp
+*.bak
+*backup*
+*.debug
+debug
+*.lock
+.last-cleanup
+file-history
+projects
+shell-snapshots
+plugins
+plans
+*.json
+!mcp.json
+
+# Python
+__pycache__/
+
+# Node
+node_modules/
